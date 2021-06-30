@@ -7,15 +7,9 @@ test -f $DISK || qemu-img create -f qcow2 -o size=8G $DISK
 
 enable () {
   case $1 in
-  display_resolution)
-    display_resolution="on"
-    ;;
-  boot_from_cd)
-    boot_from_cd="on"
-    ;;
-  display_with_gtk)
-    display_with_gtk="on"
-    ;; 
+  display_resolution) display_resolution="on" ;;
+  boot_from_cd) boot_from_cd="on" ;;
+  display_with_gtk) display_with_gtk="on" ;; 
   esac
 }
 
@@ -36,7 +30,7 @@ ${boot_from_cd:+-boot once=d} \
 -device usb-mouse \
 -device usb-kbd \
 ${display_with_gtk:+-display gtk,grab-on-hover=off,gl=off} \
-${display_resolution:+-device VGA,edid=on,xres=1440,yres=900} \
+${display_resolution:+-device VGA,multifunction=on,edid=on,xres=1440,yres=900} \
 -vga std \
 -nic user,net=192.168.65.0/24,hostfwd=tcp::2222-:22 \
 $DISK
