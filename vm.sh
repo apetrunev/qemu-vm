@@ -13,10 +13,6 @@ enable () {
   esac
 }
 
-unset display_resolution
-unset display_with_gtk
-unset boot_from_cd
-
 enable display_resolution
 enable display_with_gtk
 
